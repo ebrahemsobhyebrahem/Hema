@@ -20,26 +20,31 @@
 <body>
 
 <section>
-    <div class="container">
-        <div class="header">
-            <h1>AI Chat Hema</h1>
-            <h2>Hello, there</h2>
-            <p>How Can I help you today?</p>
-        </div>
+   <div class="container">
+    <div class="header">
+        <h1>AI Chat Hema</h1>
+        <h2>Hello, there</h2>
+        <p>How Can I help you today?</p>
+    </div>
 
-        <div class="chat_list"></div> <!-- قسم الرسائل -->
+    <div class="chat_list"></div> <!-- قسم الرسائل -->
 
-        <form action="#" class="typing_form">
-            <div class="input_wrapper">
-                <input type="text" class="typing_input" placeholder="Enter a prompt here" required>
-                <button type="submit" class="material-symbols-outlined">send</button>
-            </div>
-        </form>
+    <div id="login-status" style="display: none;">
+        <p>You are logged in!</p>
+        <!-- يمكنك إضافة المزيد من العناصر هنا مثل صورة المستخدم -->
+    </div>
 
-        <!-- عنصر حالة تسجيل الدخول -->
-        <div class="login-status" style="display: none;"></div>
+    <div id="login-button-container">
         <button onclick="signInWithGoogle()" class="signin-button">Sign in with Google</button>
     </div>
+
+    <form action="#" class="typing_form">
+        <div class="input_wrapper">
+            <input type="text" class="typing_input" placeholder="Enter a prompt here" required>
+            <button type="submit" class="material-symbols-outlined">send</button>
+        </div>
+    </form>
+</div>
 </section>
 
 <script type="module" src="firebaseConfig.js"></script>
