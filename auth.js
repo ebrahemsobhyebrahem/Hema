@@ -8,46 +8,41 @@ function signInWithGoogle() {
     signInWithRedirect(auth, provider);
 }
 
-// دالة تسجيل الخروج
 function signOutUser() {
     signOut(auth).then(() => {
-        // إظهار زر تسجيل الدخول وإخفاء معلومات المستخدم بعد تسجيل الخروج
-        document.getElementById('login-button-container').style.display = 'block';
-        document.getElementById('user-info').style.display = 'none';
+        displayLoginUI();
     }).catch((error) => {
-        console.error("Error signing out: ", error);
+        console.error("Error signing out:", error);
     });
 }
 
-// تحقق من حالة تسجيل الدخول عند تحميل الصفحة
-onAuthStateChanged(auth, async (user) => {
-    const loginButtonContainer = document.getElementById('login-button-container');
+function displayLoginUI() {
+    document.getElementById('login-button').style.display = 'block';
+    document.getElementById('user-info').style.display = 'none';
+}
+
+function displayUserUI(user) {
+    document.getElementById('login-button').style.display = 'none';
     const userInfo = document.getElementById('user-info');
-    const userPhoto = document.getElementById('user-photo');
+    userInfo.style.display = 'flex';
+    document.getElementById('user-photo').src = user.photoURL;
+}
 
+// Listen for authentication state changes
+onAuthStateChanged(auth, async (user) => {
     if (user) {
-        // إخفاء زر تسجيل الدخول وإظهار معلومات المستخدم
-        loginButtonContainer.style.display = 'none';
-        userInfo.style.display = 'flex';
-
-        // تعيين صورة المستخدم
-        userPhoto.src = user.photoURL;
-
-        // تخزين بيانات المستخدم إذا لم تكن موجودة بالفعل
+        displayUserUI(user);
         await setDoc(doc(db, "users", user.uid), {
             name: user.displayName,
             email: user.email,
             profile_picture: user.photoURL
         }, { merge: true });
-
-        console.log("User is logged in and data is saved.");
+        console.log("User is logged in and data saved.");
     } else {
-        // إظهار زر تسجيل الدخول وإخفاء معلومات المستخدم إذا لم يكن المستخدم مسجل الدخول
-        loginButtonContainer.style.display = 'block';
-        userInfo.style.display = 'none';
+        displayLoginUI();
     }
 });
 
-// جعل دالة تسجيل الدخول وتسجيل الخروج متاحة في النطاق العام
+// Make functions available globally
 window.signInWithGoogle = signInWithGoogle;
 window.signOutUser = signOutUser;
