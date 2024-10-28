@@ -1,11 +1,11 @@
 // auth.js
 import { auth, db } from './firebaseConfig.js';
-import { GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js';
+import { GoogleAuthProvider, signInWithRedirect } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js';
 import { setDoc, doc } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js';
 
 function signInWithGoogle() {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
+    signInWithRedirect(auth, provider)  // استخدام signInWithRedirect هنا
         .then(async (result) => {
             const user = result.user;
 
