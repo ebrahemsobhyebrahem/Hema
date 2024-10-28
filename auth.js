@@ -10,10 +10,14 @@ function signInWithGoogle() {
 
 // تحقق من حالة تسجيل الدخول عند تحميل الصفحة
 onAuthStateChanged(auth, async (user) => {
+    const loginButtonContainer = document.getElementById('login-button-container');
+    const loginStatus = document.getElementById('login-status');
+
     if (user) {
-        // إخفاء زر تسجيل الدخول وإظهار حالة تسجيل الدخول
-        document.getElementById('login-button-container').style.display = 'none';
-        document.getElementById('login-status').style.display = 'block';
+        // إخفاء زر تسجيل الدخول وإظهار رسالة تسجيل الدخول
+        loginButtonContainer.style.display = 'none';
+        loginStatus.style.display = 'block';
+        loginStatus.innerText = 'You are logged in!'; // إضافة رسالة "تم تسجيل الدخول"
 
         // تخزين بيانات المستخدم إذا لم تكن موجودة بالفعل
         await setDoc(doc(db, "users", user.uid), {
@@ -24,9 +28,9 @@ onAuthStateChanged(auth, async (user) => {
 
         console.log("User is logged in and data is saved.");
     } else {
-        // إظهار زر تسجيل الدخول إذا لم يكن المستخدم قد سجل الدخول
-        document.getElementById('login-button-container').style.display = 'block';
-        document.getElementById('login-status').style.display = 'none';
+        // إظهار زر تسجيل الدخول وإخفاء الرسالة إذا لم يكن المستخدم مسجل الدخول
+        loginButtonContainer.style.display = 'block';
+        loginStatus.style.display = 'none';
     }
 });
 
