@@ -8,14 +8,14 @@ function signInWithGoogle() {
     signInWithRedirect(auth, provider);
 }
 
-// مراقبة حالة تسجيل الدخول عند تحميل الصفحة
+// تحقق من حالة تسجيل الدخول عند تحميل الصفحة
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         // إخفاء زر تسجيل الدخول وإظهار حالة تسجيل الدخول
         document.getElementById('login-button-container').style.display = 'none';
         document.getElementById('login-status').style.display = 'block';
 
-        // تخزين بيانات المستخدم في Firestore إذا لم تكن موجودة
+        // تخزين بيانات المستخدم إذا لم تكن موجودة بالفعل
         await setDoc(doc(db, "users", user.uid), {
             name: user.displayName,
             email: user.email,
@@ -24,11 +24,11 @@ onAuthStateChanged(auth, async (user) => {
 
         console.log("User is logged in and data is saved.");
     } else {
-        // إظهار زر تسجيل الدخول إذا لم يكن المستخدم مسجلًا للدخول
+        // إظهار زر تسجيل الدخول إذا لم يكن المستخدم قد سجل الدخول
         document.getElementById('login-button-container').style.display = 'block';
         document.getElementById('login-status').style.display = 'none';
     }
 });
 
-// جعل الدالة متاحة في النطاق العام
+// جعل دالة تسجيل الدخول متاحة في النطاق العام
 window.signInWithGoogle = signInWithGoogle;
