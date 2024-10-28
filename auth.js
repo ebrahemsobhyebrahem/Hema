@@ -1,11 +1,11 @@
 // auth.js
 import { auth, db } from './firebaseConfig.js';
-import { GoogleAuthProvider, signInWithRedirect } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js';
-import { setDoc, doc } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js';
+import { GoogleAuthProvider, signInWithRedirect } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+import { setDoc, doc } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 
-function signInWithGoogle() {
+window.signInWithGoogle = function() {
     const provider = new GoogleAuthProvider();
-    signInWithRedirect(auth, provider)  // استخدام signInWithRedirect هنا
+    signInWithRedirect(auth, provider)
         .then(async (result) => {
             const user = result.user;
 
@@ -24,7 +24,4 @@ function signInWithGoogle() {
         .catch((error) => {
             console.error("Error during sign in: ", error);
         });
-}
-
-// جعل الدالة متاحة في النطاق العام
-window.signInWithGoogle = signInWithGoogle;
+};
