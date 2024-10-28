@@ -45,21 +45,6 @@ section {
     font-size: 1.5rem; /* تحسين حجم الخط */
 }
 
-/* تحسين الستايل لعناصر الصفحة */
-
-.chat-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.container {
-    max-width: 600px;
-    margin: auto;
-    text-align: center;
-}
-
 .user-info {
     display: flex;
     align-items: center;
@@ -93,18 +78,6 @@ section {
     cursor: pointer;
     border-radius: 5px;
 }
-
-.typing-form {
-    margin-top: 20px;
-}
-
-.input-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
 
 .typing_form {
     position: fixed;
@@ -306,17 +279,3 @@ section {
     }
 }
 
-
-
-button {
-    border: none;
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
