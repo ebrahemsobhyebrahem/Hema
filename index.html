@@ -23,30 +23,37 @@
 
 <section>
    <div class="container">
-    <div class="header">
-        <h1>AI Chat Hema</h1>
-        <h2>Hello, there</h2>
-        <p>How Can I help you today?</p>
-    </div>
+      <div class="header">
+         <h1>AI Chat Hema</h1>
+         <h2>Hello, there</h2>
+         <p>How Can I help you today?</p>
+      </div>
 
-    <div class="chat_list"></div> <!-- قسم الرسائل -->
+      <div class="chat_list"></div> <!-- قسم الرسائل -->
 
-    <div id="login-status" style="display: none;">
-        <p>You are logged in!</p>
-        <!-- يمكنك إضافة المزيد من العناصر هنا مثل صورة المستخدم -->
-    </div>
+      <!-- حالة تسجيل الدخول -->
+      <div id="login-status" style="display: none;">
+         <p>You are logged in!</p>
+      </div>
 
-    <div id="login-button-container">
-        <button onclick="signInWithGoogle()" class="signin-button">Sign in with Google</button>
-    </div>
+      <!-- زر تسجيل الدخول -->
+      <div id="login-button-container">
+         <button onclick="signInWithGoogle()" class="signin-button">Sign in with Google</button>
+      </div>
 
-    <form action="#" class="typing_form">
-        <div class="input_wrapper">
+      <!-- صورة المستخدم وزر تسجيل الخروج -->
+      <div id="user-info" style="display: none;">
+         <img id="user-photo" src="" alt="User Photo" style="width: 40px; height: 40px; border-radius: 50%;" />
+         <button onclick="signOutUser()" class="signout-button">Sign Out</button>
+      </div>
+
+      <form action="#" class="typing_form">
+         <div class="input_wrapper">
             <input type="text" class="typing_input" placeholder="Enter a prompt here" required>
             <button type="submit" class="material-symbols-outlined">send</button>
-        </div>
-    </form>
-</div>
+         </div>
+      </form>
+   </div>
 </section>
     
 <script type="module" src="firebaseConfig.js"></script>
