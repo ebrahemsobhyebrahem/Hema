@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Hema</title>
+
+    <link rel="shortcut icon" href="ChatHema1.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" />
+    <!-- Firebase App (ضروري) -->
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js"></script>
+    <!-- Firebase Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js"></script>
+</head>
+<body>
+
+<section>
+    <div class="container">
+        <div class="header">
+            <h1>AI Chat Hema</h1>
+            <h2>Hello, there</h2>
+            <p>How Can I help you today?</p>
+            <button onclick="signInWithGoogle()" class="signin-button">Sign in with Google</button>
+        </div>
+
+        <div class="chat_list"></div>
+
+        <form action="#" class="typing_form">
+            <div class="input_wrapper">
+                <input type="text" class="typing_input" placeholder="Enter a prompt here" required>
+                <button type="submit" class="material-symbols-outlined">send</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script type="module" src="firebaseConfig.js"></script>
+<script type="module" src="auth.js"></script> <!-- تأكد من استيراد auth.js قبل main.js -->
+<script type="module" src="firestore.js"></script>
+<script type="module" src="main.js"></script>
+
+</body>
+</html>
