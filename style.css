@@ -45,40 +45,6 @@ section {
     font-size: 1.5rem; /* تحسين حجم الخط */
 }
 
-.user-info {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-.user-photo {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.signout-button {
-    padding: 5px 10px;
-    border: none;
-    background-color: #ff4d4d;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.signin-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
 .typing_form {
     position: fixed;
     bottom: 0;
@@ -279,3 +245,17 @@ section {
     }
 }
 
+
+
+button {
+    border: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
