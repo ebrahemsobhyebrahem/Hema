@@ -30,14 +30,15 @@
     </div>
 
     <div class="chat_list"></div> <!-- قسم الرسائل -->
-       
-<div id="login-button-container">
-    <button onclick="signInWithGoogle()">تسجيل الدخول باستخدام Google</button>
-</div>
-<div id="login-status" style="display: none;">
-    تم تسجيل الدخول بنجاح!
-</div>
 
+    <div id="login-status" style="display: none;">
+        <p>You are logged in!</p>
+        <!-- يمكنك إضافة المزيد من العناصر هنا مثل صورة المستخدم -->
+    </div>
+
+    <div id="login-button-container">
+        <button onclick="signInWithGoogle()" class="signin-button">Sign in with Google</button>
+    </div>
 
     <form action="#" class="typing_form">
         <div class="input_wrapper">
@@ -47,7 +48,6 @@
     </form>
 </div>
 </section>
-
 <script type="module" src="firebaseConfig.js"></script>
 <script type="module" src="auth.js"></script>
 <script type="module" src="main.js"></script>
