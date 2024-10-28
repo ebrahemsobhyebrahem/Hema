@@ -1,9 +1,8 @@
 // firebaseConfig.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 
-// إعدادات Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDSKD85CvBegxmTB85U53cfMzARY4bT15Q",
     authDomain: "chathema-731a9.firebaseapp.com",
@@ -14,9 +13,7 @@ const firebaseConfig = {
     measurementId: "G-DZ2WKLJK5L"
 };
 
-// تهيئة Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-export { auth, db };
+// Initialize Firebase
+export const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+export const auth = getAuth(app);
