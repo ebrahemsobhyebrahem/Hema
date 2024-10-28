@@ -6,48 +6,46 @@
     <title>AI Chat Hema</title>
     <link rel="shortcut icon" href="ChatHema1.png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" />
+    <!-- Firebase Libraries -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js"></script>
 </head>
 <body>
 
-<section class="chat-section">
-    <div class="container">
-        <header>
-            <h1>AI Chat Hema</h1>
-            <p>Hello, there! How can I help you today?</p>
-        </header>
+<section>
+   <div class="container">
+      <div class="header">
+         <h1>AI Chat Hema</h1>
+         <h2>Hello, there</h2>
+         <p>How Can I help you today?</p>
+      </div>
 
-        <div class="chat-list"></div> <!-- قسم الرسائل -->
+      <div class="chat_list"></div> <!-- قسم الرسائل -->
 
-        <!-- قسم حالة تسجيل الدخول -->
-        <div id="login-status" style="display: none;">
-            <p>You are logged in!</p>
-        </div>
+      <!-- زر تسجيل الدخول -->
+      <div id="login-button-container">
+         <button onclick="signInWithGoogle()" class="signin-button">Sign in with Google</button>
+      </div>
 
-        <!-- زر تسجيل الدخول -->
-        <div id="login-button-container">
-            <button onclick="signInWithGoogle()" class="signin-button">Sign in with Google</button>
-        </div>
+      <!-- معلومات المستخدم بعد تسجيل الدخول -->
+      <div id="user-info" style="display: none; flex-direction: row; align-items: center;">
+         <img id="user-photo" src="" alt="User Photo" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 8px;" />
+         <button onclick="signOutUser()" class="signout-button">Sign Out</button>
+      </div>
 
-        <!-- صورة المستخدم وزر تسجيل الخروج -->
-        <div id="user-info" style="display: none;" class="user-info">
-            <img id="user-photo" src="" alt="User Photo" class="user-photo">
-            <button onclick="signOutUser()" class="signout-button">Sign Out</button>
-        </div>
-
-        <!-- نموذج الكتابة -->
-        <form action="#" class="typing-form">
-            <div class="input-wrapper">
-                <input type="text" class="typing-input" placeholder="Enter a prompt here" required>
-                <button type="submit" class="material-symbols-outlined">send</button>
-            </div>
-        </form>
-    </div>
+      <form action="#" class="typing_form">
+         <div class="input_wrapper">
+            <input type="text" class="typing_input" placeholder="Enter a prompt here" required>
+            <button type="submit" class="material-symbols-outlined">send</button>
+         </div>
+      </form>
+   </div>
 </section>
 
 <script type="module" src="firebaseConfig.js"></script>
 <script type="module" src="auth.js"></script>
-<script type="module" src="main.js"></script>
 
 </body>
 </html>
