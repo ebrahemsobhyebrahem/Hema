@@ -8,41 +8,54 @@ function signInWithGoogle() {
     signInWithRedirect(auth, provider);
 }
 
+// دالة تسجيل الخروج
 function signOutUser() {
     signOut(auth).then(() => {
-        displayLoginUI();
+        // إعادة تعيين حالة الواجهة بعد تسجيل الخروج
+        updateUI(null);
     }).catch((error) => {
-        console.error("Error signing out:", error);
+        console.error("Error signing out: ", error);
     });
 }
 
-function displayLoginUI() {
-    document.getElementById('login-button').style.display = 'block';
-    document.getElementById('user-info').style.display = 'none';
-}
-
-function displayUserUI(user) {
-    document.getElementById('login-button').style.display = 'none';
+// تحديث حالة الواجهة بناءً على حالة تسجيل الدخول
+function updateUI(user) {
+    const loginButtonContainer = document.getElementById('login-button-container');
     const userInfo = document.getElementById('user-info');
-    userInfo.style.display = 'flex';
-    document.getElementById('user-photo').src = user.photoURL;
-}
+    const userPhoto = document.getElementById('user-photo');
+    const loginStatus = document.getElementById('login-status');
 
-// Listen for authentication state changes
-onAuthStateChanged(auth, async (user) => {
     if (user) {
-        displayUserUI(user);
-        await setDoc(doc(db, "users", user.uid), {
+        // إخفاء زر تسجيل الدخول، إظهار معلومات المستخدم، وتحديث صورة المستخدم
+        loginButtonContainer.style.display = 'none';
+        userInfo.style.display = 'flex';
+        userPhoto.src = user.photoURL;
+        loginStatus.style.display = 'block';
+        loginStatus.innerText = 'You are logged in!';
+        
+        // حفظ بيانات المستخدم في Firestore
+        setDoc(doc(db, "users", user.uid), {
             name: user.displayName,
             email: user.email,
             profile_picture: user.photoURL
-        }, { merge: true });
-        console.log("User is logged in and data saved.");
+        }, { merge: true }).then(() => {
+            console.log("User data saved successfully!");
+        }).catch((error) => {
+            console.error("Error saving user data: ", error);
+        });
     } else {
-        displayLoginUI();
+        // إعادة عرض زر تسجيل الدخول وإخفاء معلومات المستخدم
+        loginButtonContainer.style.display = 'block';
+        userInfo.style.display = 'none';
+        loginStatus.style.display = 'none';
     }
+}
+
+// مراقبة حالة تسجيل الدخول عند تحميل الصفحة
+onAuthStateChanged(auth, (user) => {
+    updateUI(user);
 });
 
-// Make functions available globally
+// تصدير دوال تسجيل الدخول وتسجيل الخروج
 window.signInWithGoogle = signInWithGoogle;
 window.signOutUser = signOutUser;
